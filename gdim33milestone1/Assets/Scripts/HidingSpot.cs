@@ -8,8 +8,9 @@ public class HidingSpot : MonoBehaviour
     public Transform exitPosition;
     public TextMeshProUGUI interactText;
 
+    public bool isHiding = false;
+
     private bool playerNearby = false;
-    private bool isHiding = false;
 
     void Start()
     {
@@ -57,6 +58,11 @@ public class HidingSpot : MonoBehaviour
         {
             cc.enabled = true;
         }
+    }
+
+    public bool PlayerIsHiding()
+    {
+        return isHiding;
     }
 
     private void OnTriggerEnter(Collider other)
