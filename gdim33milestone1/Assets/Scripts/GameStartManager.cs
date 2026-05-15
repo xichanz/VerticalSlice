@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameStartManager : MonoBehaviour
 {
     public GameObject rulePanel;
+    public GameObject monster;
 
     public MonoBehaviour playerController;
     public Camera playerCamera;
@@ -18,6 +19,7 @@ public class GameStartManager : MonoBehaviour
         mouseLook = playerCamera.GetComponent<MouseLook>();
         if (!hasShownRules)
         {
+            monster.SetActive(false);
             
             rulePanel.SetActive(true);
 
@@ -33,6 +35,7 @@ public class GameStartManager : MonoBehaviour
         else
         {
             rulePanel.SetActive (false);
+            monster.SetActive (true);
             if (playerController != null )
                 playerController.enabled = true;
                 mouseLook.enabled = true;
@@ -60,6 +63,8 @@ public class GameStartManager : MonoBehaviour
         hasShownRules = true;
 
         rulePanel.SetActive(false);
+
+        monster.SetActive(true);
         if( playerController != null )
             playerController.enabled = true;
         mouseLook.enabled = true;
