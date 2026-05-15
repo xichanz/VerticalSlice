@@ -25,30 +25,29 @@ This system will build on the existing Wrong-path-trigger-ambush-monster mechani
 
 Basic steps:
 
-1. Preparation: Create lights, audio, and a post-processing vignette effect
-  a. Create and identify point light components used for each ceiling light that I want to flicker during the ambush
-  b. Add an audio source component in WrongPathTrigger
-  c. Import and drag the jump scare audio clip into the audio source component
-  d. Turn off the Loop and Play On Awake, set the Spatial Blend to 1,
-  e. Set up the vignette override in the global post-processing volume.
-2. Ensure that the visual scripting graph riddleUIGraph and wrongAnswerTrigger are still working
-  a. Use the existing WrongAnswerTrigger graph to detect when the player chooses the wrong path and collides with the wrong path trigger
-  b. Send the WrongAnswer custom event to the riddleUIGraph
-  c. Set ambushTriggered to true so that the same ambush does not repeat when the player collides with the wrong path trigger again
-3. Create a C# script that 1) controls light state change, 2) play audio clip, and 3) changes vignette color and connect it to a visual scripting graph
-  a. Create a new C# script and name it AmbushVisualEffects
-    i. Create public variables for the lights, audio source, and global volume
-    ii. Assign each variable in the inspector
-    iii. Get vignette effect from volume
-    iv. Create a public method PlayAmbushEffect(), which runs EffectRoutine and can be called from the visual scripting graph
-    v. Create an ambush sequence EffectRoutine() which plays the jumpscare audio, flickers the lights twice, changes the vignette color to red, and returns the vignette to black after a few seconds
-    vi. Play jump scare audio by ambushAudio.Play()
-  b. Create a GameObject and name it AmbushVisualEffectManager
-  c. Regenerate nodes by clicking Edit, Project Settings, Visual Scripting
-  d. In riddleUIGraph, get AmbushVisualEffect by Get Component, then call PlayAmbushEffect()
-    i. Set ambushTriggered to True
-    ii. Set patrol monster inactive
-    iii. Activate ambush monster
+#### Step 1
+Preparation: Create lights, audio, and a post-processing vignette effect
+1. Create and identify point light components used for each ceiling light that I want to flicker during the ambush
+2. Add an audio source component in WrongPathTrigger
+3. Import and drag the jump scare audio clip into the audio source component
+4. Turn off the Loop and Play On Awake, set the Spatial Blend to 1,
+5. Set up the vignette override in the global post-processing volume.
+
+#### Step 2
+Ensure that the visual scripting graph riddleUIGraph and wrongAnswerTrigger are still working
+1. Use the existing WrongAnswerTrigger graph to detect when the player chooses the wrong path and collides with the wrong path trigger
+2. Send the WrongAnswer custom event to the riddleUIGraph
+3. Set ambushTriggered to true so that the same ambush does not repeat when the player collides with the wrong path trigger again
+
+#### Step 3
+Create a C# script that 1) controls light state change, 2) play audio clip, and 3) changes vignette color and connect it to a visual scripting graph
+1. Create a new C# script and name it AmbushVisualEffects and create public variables for the lights, audio source, and global volume
+2. Assign each variable in the inspector. Get vignette effect from volume
+3. Create a public method PlayAmbushEffect(), which runs EffectRoutine and can be called from the visual scripting graph
+4. Create an ambush sequence EffectRoutine() which plays the jumpscare audio, flickers the lights twice, changes the vignette color to red, and returns the vignette to black after a few seconds
+5. Create a GameObject and name it AmbushVisualEffectManager
+6. Regenerate nodes by clicking Edit, Project Settings, Visual Scripting
+7. In riddleUIGraph, get AmbushVisualEffect by Get Component, then call PlayAmbushEffect(). Then, set ambushTriggered to True, set patrol monster inactive, activate ambush monster
 
 
 ### Question 2
@@ -56,6 +55,8 @@ Basic steps:
 The task breakdown effectively helped me to build an animation system and the wrong-path trigger mechanics by offering clear and detailed steps towards implementing that feature. More importantly, by breaking down the feature into 2-3 bigger steps, I get less overwhelmed by all the things I need to do. The wrong path ambush involves multiple components, ranging from lighting, audio, post-processing, to visual scripting and C# script communication. By sequencing the steps, I also made fewer mistakes because I’m less likely to skip steps and jump to the next step when I’m still working on the previous function. For instance, I remembered to regenerate nodes before bridging the visual scripting graph with a script. If I were to do the breakdown again, I might specify the node more clearly so that I don’t accidentally add the wrong node. For example, I will write the exact name for each node, like Trigger Custom Event, Get Object Variables.
 
 ### Question 3
+
+<img width="1363" height="377" alt="RiddleManager_ riddleUIGraph" src="https://github.com/user-attachments/assets/dab11a02-3a04-4512-9b97-87a0ca3ad412" />
 
 In milestone 2, I bridged the visual scripting graph and code in the wrong-path-triggered-ambush system. The existing riddleUIGraph is currently responsible for triggering the ambush monster when the player selects the wrong path at the crossroad. After the player collides with the WrongAnswerTrigger in the wrong path, the graph sets ambushTriggered to true, disables the patrol monster, moves the ambush monster to the ambushPoint, and finally activates it. After this visual scripting sequence, the riddleUIGraph calls the C# script AmbushVisualEffect.cs. The graph uses Get Component to access AmbushVisualEffect component on the AmbushEffectManager. Then, the graph calls the public method PlayAmbushEffect() in the C# script. This method then initiates the ambush sequence, including the flickering of the lights, playing of the jumpscare audio, and the setting of vignette color to red for a few seconds. This bridging of the visual scripting graph allows the graph to control the main gameplay mechanics of ambush monster spawning, while C# handles the visual and audio feedback for selecting the wrong path.
 
