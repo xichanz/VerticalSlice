@@ -7,15 +7,18 @@ public class GameStartManager : MonoBehaviour
     public GameObject rulePanel;
 
     public MonoBehaviour playerController;
-    public MonoBehaviour mouseLook;
+    public Camera playerCamera;
 
+    private Behaviour mouseLook;
     private bool gameStarted = false;
     private static bool hasShownRules = false;
 
     private void Start()
     {
+        mouseLook = playerCamera.GetComponent<MouseLook>();
         if (!hasShownRules)
         {
+            
             rulePanel.SetActive(true);
 
             if (playerController != null ) 
