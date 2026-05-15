@@ -51,4 +51,12 @@ public class AmbushVisualEffects : MonoBehaviour
             light.enabled=enabled;
         }
     }
+
+    public void StopAmbushEffect()
+    {
+        if (ambushAudio != null)
+        {
+            ambushAudio.Stop();
+        }
+    }
 }
