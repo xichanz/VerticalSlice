@@ -39,9 +39,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorResolution: 32
-    - _DitherSpread: 0.01
+    - _DitherSpread: 0.1
     - _TintStrength: 0.61
     m_Colors:
     - _FragmentBaseColor: {r: 0.03, g: 0.03, b: 0.03, a: 0}
-    - _TintColor: {r: 0.8962264, g: 0.7873777, b: 0.5284354, a: 1}
+    - _TintColor: {r: 0.37844595, g: 0.5377358, b: 0.3221342, a: 1}
   m_BuildTextureStacks: []
