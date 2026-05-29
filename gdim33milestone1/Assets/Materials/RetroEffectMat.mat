@@ -38,10 +38,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorResolution: 8
-    - _DitherSpread: 0.1
-    - _TintStrength: 0.61
+    - _ColorResolution: 32
+    - _DitherSpread: 0.001
+    - _TintStrength: 0.595
     m_Colors:
-    - _FragmentBaseColor: {r: 0.03, g: 0.03, b: 0.03, a: 0}
-    - _TintColor: {r: 0.37844595, g: 0.5377358, b: 0.3221342, a: 1}
+    - _FragmentBaseColor: {r: 0.01, g: 0.01, b: 0.01, a: 0}
+    - _TintColor: {r: 0.32600567, g: 0.6981132, b: 0.6755823, a: 1}
   m_BuildTextureStacks: []
