@@ -1,4 +1,6 @@
 # GDIM33 Vertical Slice
+
+***
 ## Milestone 1 Devlog
 
 ### Question 1
@@ -16,6 +18,8 @@ In Chase, the monster will chase after the player using chaseSpeed of 5.5 units.
 When the player enters the attack range of the monster, the state machine sets the game over panel and sets the cursor visible so that the player can use the cursor to hit restart button to retry. At the same time, the attack state will also set the time scale to 0 to stop the game. 
 
 The monster’s state machine is closely related to the UI system, such as GameOverPanel. The attack state will directly activate the game-over screen and allow the player to interact with UI buttons using the cursor. The monster’s state machine also connects to the hiding mechanic. This mechanic allows the player to hide from the monster by entering a hiding spot. As a non-core mechanic feature, it is still under development. However, once complete, the player will set a boolean variable called IsHiding to true by a C# script and reset the monster’s NavMeshAgent path and trigger a transition from chase to patrol.
+
+***
 
 ## Milestone 2 Devlog
 
