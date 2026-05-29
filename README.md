@@ -64,6 +64,8 @@ In milestone 2, I bridged the visual scripting graph and code in the wrong-path-
 
 I hope the grader can grade the monster’s NavMesh navigation for my Unity System choice. The monster uses a NavMesh agent to patrol through the maze and chase the player when the player is detected. This could be visually seen in the game and by checking the monster’s inspector and its NavMesh Agent, as well as its state machine. 
 
+---
+
 ## Milestone 3 Devlog
 
 <img width="1470" height="786" alt="RetroEffect" src="https://github.com/user-attachments/assets/f1ae6dc4-82aa-4129-9303-7fd8b5648a9c" />
