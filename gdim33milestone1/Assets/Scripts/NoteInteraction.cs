@@ -30,7 +30,7 @@ public class NoteInteraction : MonoBehaviour
                 CloseNote();
         }
 
-        if (noteOpen && Input.GetKeyDown(KeyCode.Escape))
+        if (noteOpen && Input.GetKeyDown(KeyCode.C))
         {
             CloseNote();
         }
