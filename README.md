@@ -65,7 +65,22 @@ In milestone 2, I bridged the visual scripting graph and code in the wrong-path-
 I hope the grader can grade the monster’s NavMesh navigation for my Unity System choice. The monster uses a NavMesh agent to patrol through the maze and chase the player when the player is detected. This could be visually seen in the game and by checking the monster’s inspector and its NavMesh Agent, as well as its state machine. 
 
 ## Milestone 3 Devlog
-Milestone 3 Devlog goes here.
+
+***
+
+## Milestone 3 Devlog
+
+<img width="1470" height="786" alt="RetroEffect" src="https://github.com/user-attachments/assets/f1ae6dc4-82aa-4129-9303-7fd8b5648a9c" />
+
+### Question 1
+I used a full-screen retro post-processing effect shader to create a dithered, low-resolution, retro style. This is a full screen effect which applied to the entire game screen in default. The shader first uses the UV node as screen space coordinates, then the Dither node creates a dotted pattern based on these coordinates. Then, I used a Subtract node to control the center value of the dither pattern between  -0.5 and 0.5, ensuring that dither both increases and decreases image brightness. Multiply node with an exposed property of DitherSpread controls the extent to which dither modified original color. A DitherSpread of 0.1 significantly impacts game view color. In the project, it tinted the final image into a purplish blue, whereas a value of 0.001 kept the original game scene color with limited alteration. URP Sample Buffer node reads the original game from Source Buffer: BlitSource rendered by the camera on the player. The Add node then apply the Dither onto the original game scene. Colors are later quantized through the Multiply node and the ColorResolution property. ColorResolution is a Float exposed property that controls the number of color steps desired for the image to retain after quantization. The Multiply node amplifies the color values. The Floor node uses the enlarged value and performs color quantization, making the smooth transition of color value into a more distinct tone scale and creating a sense of retro video game. The Divide Node divides the color by ColorResolution to scale the color value back to the normal range of 0~1. The Add node and FragmentBaseColor prevent the game from being too dark by adding a small base color compensation. The last part of the shader graph, with the Multiply node and the Color property TintColor create a tinted version of the game scene. The Lerp node at last controls the strength of the tint.
+
+### Question 2
+Based on feedback received in milestone 2, the camera moves too quickly, making it hard to control. To improve camera control in the WebGL build, I lowered the mouse sensitivity from 100f to 10f. The reduction of value from 100f to 10f could reduce the rotation amplitude, making the camera easier to control. I also address this sensitivity issue by lowering the sensitivity when building the game for WebGL. By doing so, I get to reduce the chance of a sudden jump and glitch in the camera for the itch build. I also lower the difficulty of the riddle at each crossroad so that players don’t need to spend a lot of time figuring out the correct answer while being chased by the monster. For instance, instead of counting the number of lockers or doors in the hallway, I change it to simple pattern problems: 2 → 4 → 8 → ? and ABCCBA, what’s next. Moreover, I changed the intensity of lighting based on location to improve the gameplay experience.
+
+### Question 3
+Since the last milestone, I added a fourth crossroad in the maze prior to the exit. In this fourth crossroad, I built a three-way intersection to create variety. The left path leads to a similar ambush effect, the middle path leads to a dead end, and the right path leads to the exit. Prior to this crossroad, I added a table with a note that the player could interact with and get a hint on the correct path. When the player enters the collider of the desk, they can press E to read the note. I added two full-screen post-processing effects. The first effect is the retro dither shader, and the second is a blood vignette, which will only appear when the player gets hurt. I also added a sprint feature, which allows players to sprint for half a second by pressing left shift. For visual consistency, I changed the font on the crossroad to be the same as the font in the menu and opening prompt. I also relocated the riddle text so that it is more in the center. Lastly, I added more environmental decoration, such as windows and doors, to the maze.
+
 ## Milestone 4 Devlog
 Milestone 4 Devlog goes here.
 ## Final Devlog
