@@ -333,7 +333,7 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 0.0,
+            "x": 83.99999237060547,
             "y": 200.0
         },
         "m_Blocks": [
@@ -618,7 +618,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "2444bb01534f4742873182eab333b7ba",
     "m_Id": 0,
-    "m_DisplayName": "EffectStrength",
+    "m_DisplayName": "EffectStrength01",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1414,10 +1414,10 @@
     "m_Guid": {
         "m_GuidSerialized": "b54820a9-ac86-492e-9691-926553694e3b"
     },
-    "m_Name": "EffectStrength",
+    "m_Name": "EffectStrength01",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "EffectStrength",
-    "m_DefaultReferenceName": "_EffectStrength",
+    "m_RefNameGeneratedByDisplayName": "EffectStrength01",
+    "m_DefaultReferenceName": "_EffectStrength01",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1427,7 +1427,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.5,
+    "m_Value": 1.0,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
