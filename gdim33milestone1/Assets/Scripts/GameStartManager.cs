@@ -10,47 +10,55 @@ public class GameStartManager : MonoBehaviour
     public MonoBehaviour playerController;
     public Camera playerCamera;
 
+    public Material hurtMat;
+    public UISoundManager uiSoundManager;
+
     private Behaviour mouseLook;
     private bool gameStarted = false;
     private static bool hasShownRules = false;
 
     private void Start()
     {
+        if (hurtMat != null)
+        {
+            hurtMat.SetFloat("_EffectStrength01", 0f);
+        }
+
         mouseLook = playerCamera.GetComponent<MouseLook>();
+
         if (!hasShownRules)
         {
             monster.SetActive(false);
-            
             rulePanel.SetActive(true);
 
-            if (playerController != null ) 
+            if (playerController != null)
                 playerController.enabled = false;
-                mouseLook.enabled = false;
+
+            mouseLook.enabled = false;
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-
         }
-
         else
         {
-            rulePanel.SetActive (false);
-            monster.SetActive (true);
-            if (playerController != null )
+            rulePanel.SetActive(false);
+            monster.SetActive(true);
+
+            if (playerController != null)
                 playerController.enabled = true;
-                mouseLook.enabled = true;
+
+            mouseLook.enabled = true;
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
             gameStarted = true;
         }
-        
     }
 
     private void Update()
     {
-        if(!gameStarted && (Input.GetKeyDown(KeyCode.Space)|| (Input.GetKeyDown(KeyCode.Return))))
+        if (!gameStarted && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)))
         {
             StartGame();
         }
@@ -58,15 +66,18 @@ public class GameStartManager : MonoBehaviour
 
     void StartGame()
     {
-        gameStarted = true;
+        if (uiSoundManager != null)
+            uiSoundManager.PlayClickSound();
 
+        gameStarted = true;
         hasShownRules = true;
 
         rulePanel.SetActive(false);
-
         monster.SetActive(true);
-        if( playerController != null )
+
+        if (playerController != null)
             playerController.enabled = true;
+
         mouseLook.enabled = true;
 
         Cursor.lockState = CursorLockMode.Locked;

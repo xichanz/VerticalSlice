@@ -7,6 +7,8 @@ public class NoteInteraction : MonoBehaviour
     public GameObject readInteractionPrompt;
     public GameObject notePanel;
 
+    public UISoundManager uiSoundManager;
+
     private GameObject player;
     private MonoBehaviour playerController;
     private MonoBehaviour mouseLook;
@@ -92,6 +94,9 @@ public class NoteInteraction : MonoBehaviour
 
     void OpenNote()
     {
+        if (uiSoundManager != null)
+            uiSoundManager.PlayClickSound();
+
         noteOpen = true;
 
         readInteractionPrompt.SetActive(false);
@@ -109,6 +114,9 @@ public class NoteInteraction : MonoBehaviour
 
     void CloseNote()
     {
+        if (uiSoundManager != null)
+            uiSoundManager.PlayClickSound();
+
         noteOpen = false;
 
         notePanel.SetActive(false);
