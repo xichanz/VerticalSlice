@@ -16,6 +16,9 @@ public class MouseLook : MonoBehaviour
     {
         // Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
+#if UNITY_WEBGL
+        mouseSensitivity = mouseSensitivity / 2.0f;
+#endif
     }
 
     // Update is called once per frame
@@ -23,9 +26,6 @@ public class MouseLook : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        mouseX = Mathf.Clamp(mouseX,-2f,2f);
-        mouseY = Mathf.Clamp(mouseY,-2f,2f);
 
         yRotation += mouseX;
         xRotation -= mouseY;
