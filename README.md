@@ -64,9 +64,6 @@ In milestone 2, I bridged the visual scripting graph and code in the wrong-path-
 
 I hope the grader can grade the monster’s NavMesh navigation for my Unity System choice. The monster uses a NavMesh agent to patrol through the maze and chase the player when the player is detected. This could be visually seen in the game and by checking the monster’s inspector and its NavMesh Agent, as well as its state machine. 
 
-## Milestone 3 Devlog
-
-***
 
 ## Milestone 3 Devlog
 
@@ -83,13 +80,15 @@ Since the last milestone, I added a fourth crossroad in the maze prior to the ex
 
 
 ## Final Devlog
-Final Devlog goes here.
 
 ### Question 1
 
 Eyes Wide Open is a first-person puzzle and horror game. My core gameplay loop involves the player navigating through the maze and looking for the exit by reading through the simple riddle inscribed on the wall in crossroad while escaping from the monster who chase them. Each riddle is a different question, such as finding a pattern in a number sequence, which requires a fast response. If the path the player enters is correct, then they proceed to the next crossroad and move closer to the exit. If the player enters the wrong path, an ambush sequence will be triggered, including monster ambush, chase, and other visual cues. If the player gets caught by the monster, then game over. In the initial pitch, I planned to set the game in a vintage luxurious hotel with two levels, stealth, monster trait observation, and randomized monster trait features. However, due to scope control and access to 3D assets, I finalized the plan by keeping a single-level maze, changing the environment to a school corridor with four major crossroads. The level is constructed by retro low-poly styled 3D assets, decorated with props like a school desk and chair, lockers, doors, and a trash can. Currently, the game has implemented core mechanics of crossroads, riddle system, monster AI navigation, monster state machine( controls transition between chase/patrol/attack) system, ambush system, sprint mechanic, blood vignette, retro post-processing effect, and note interaction system at the fourth crossroad. Thus, the current content in the vertical slice is able to illustrate to the player the full game sequence of discovery, memorization, puzzle solving, and tense chase with escalating pressure.
 
 ### Question 2
+
+<img width="2560" height="609" alt="image" src="https://github.com/user-attachments/assets/3c46cd7c-6490-4d21-bbf2-659de297e403" />
+<img width="1627" height="579" alt="image" src="https://github.com/user-attachments/assets/61df957d-3bf6-4b4e-935a-101c084586a8" />
 
 My rendering effect is a blood vignette full-screen post-processing effect. This post-processing effect uses a Full Screen Pass Renderer Feature. Its effect strength is controlled by the _EffectStrength01, a custom exposed Float property in the HurtPostEffect Shader Graph on the Material HurtMat. This effect is initialized to an effect strength of 0 by default, making the effect hidden when the game starts. This feature becomes visible when the player is caught by the monster, making it activated by gameplay logic. In milestone 4, I worked on the monster’s attack state in its state machine. In the visual scripting graph, I used a Material Set Float node to change the _EffectStrength01 on HurtMat to 1, activating the blood vignette. This effect shows a blood stain effect when the player dies. When the player clicks on the restart button, the restart button graph will again use the Material Set Float node to change the _EffectStrength01 back to 0. This will make the blood vignette disappear when the game restarts. Lastly, the C# script GameStarterManager will also initialize the _EffectStrength01 to 0, preventing the incorrect display of the blood vignette when the player exits play mode without interacting with the restart button. Throughout this manipulation of effect strength, the display and activation of the blood vignette is entirely controlled by monster attack gameplay logic and restart gameplay logic.
 
