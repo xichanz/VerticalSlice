@@ -85,15 +85,15 @@ Since the last milestone, I added a fourth crossroad in the maze prior to the ex
 ## Final Devlog
 Final Devlog goes here.
 
-###Question 1
+### Question 1
 
 Eyes Wide Open is a first-person puzzle and horror game. My core gameplay loop involves the player navigating through the maze and looking for the exit by reading through the simple riddle inscribed on the wall in crossroad while escaping from the monster who chase them. Each riddle is a different question, such as finding a pattern in a number sequence, which requires a fast response. If the path the player enters is correct, then they proceed to the next crossroad and move closer to the exit. If the player enters the wrong path, an ambush sequence will be triggered, including monster ambush, chase, and other visual cues. If the player gets caught by the monster, then game over. In the initial pitch, I planned to set the game in a vintage luxurious hotel with two levels, stealth, monster trait observation, and randomized monster trait features. However, due to scope control and access to 3D assets, I finalized the plan by keeping a single-level maze, changing the environment to a school corridor with four major crossroads. The level is constructed by retro low-poly styled 3D assets, decorated with props like a school desk and chair, lockers, doors, and a trash can. Currently, the game has implemented core mechanics of crossroads, riddle system, monster AI navigation, monster state machine( controls transition between chase/patrol/attack) system, ambush system, sprint mechanic, blood vignette, retro post-processing effect, and note interaction system at the fourth crossroad. Thus, the current content in the vertical slice is able to illustrate to the player the full game sequence of discovery, memorization, puzzle solving, and tense chase with escalating pressure.
 
-###Question 2
+### Question 2
 
 My rendering effect is a blood vignette full-screen post-processing effect. This post-processing effect uses a Full Screen Pass Renderer Feature. Its effect strength is controlled by the _EffectStrength01, a custom exposed Float property in the HurtPostEffect Shader Graph on the Material HurtMat. This effect is initialized to an effect strength of 0 by default, making the effect hidden when the game starts. This feature becomes visible when the player is caught by the monster, making it activated by gameplay logic. In milestone 4, I worked on the monster’s attack state in its state machine. In the visual scripting graph, I used a Material Set Float node to change the _EffectStrength01 on HurtMat to 1, activating the blood vignette. This effect shows a blood stain effect when the player dies. When the player clicks on the restart button, the restart button graph will again use the Material Set Float node to change the _EffectStrength01 back to 0. This will make the blood vignette disappear when the game restarts. Lastly, the C# script GameStarterManager will also initialize the _EffectStrength01 to 0, preventing the incorrect display of the blood vignette when the player exits play mode without interacting with the restart button. Throughout this manipulation of effect strength, the display and activation of the blood vignette is entirely controlled by monster attack gameplay logic and restart gameplay logic.
 
-###Question 3
+### Question 3
 
 Personally, before breaking down a large project, I believe it is useful to first compile a pitch or game proposal document, establishing the core mechanics and project scope. This is an important starting point because it could effectively guide the direction of the project while acting as a scope control. The bubble diagram is a very helpful technique to break down different systems in the game. In the vertical slice, I separate the game into the player system, the monster AI system, the crossroad system, the UI system, etc. I used arrows to indicate the interactions between different systems. The monster AI system further details the three distinct states of patrol, chase, and attack. This visualized display of game systems made me understand the relationship between each system and provided a more explicit idea of the structure and the scope of the game.
 
@@ -105,7 +105,7 @@ By splitting large projects into smaller sections and systems, breakdowns enhanc
 
 ## Open-source assets
 
-(Monster Model)[https://assetstore.unity.com/packages/3d/characters/creatures/krasue-4571]
-(School Environment)[https://assetstore.unity.com/packages/3d/environments/modular-abandoned-school-pack-animated-monster-character-328175]
-(UI Sound Effect)[https://opengameart.org/content/bad-sound-1]
+[Monster Model](https://assetstore.unity.com/packages/3d/characters/creatures/krasue-4571)
+[School Environment](https://assetstore.unity.com/packages/3d/environments/modular-abandoned-school-pack-animated-monster-character-328175)
+[UI Sound Effect](https://opengameart.org/content/bad-sound-1)
 
